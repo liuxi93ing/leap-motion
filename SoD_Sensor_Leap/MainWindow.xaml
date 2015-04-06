@@ -1,0 +1,47 @@
+﻿<Window x:Class="SoD_Sensor_Leap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="1029"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="177*"/>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="273*"/>
+            <ColumnDefinition Width="286*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Name="controlStackpanel" Grid.Row="0" VerticalAlignment="Stretch" Grid.RowSpan="1" Grid.ColumnSpan="5">
+            <Label Name="NameLabel" Content="Sensor ID" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,442,0"/>
+            <TextBox Name="NameTextBox" HorizontalAlignment="Left" Text="" Width="125" TabIndex="0" VerticalContentAlignment="Center" ToolTip="Sensor ID" Margin="20,0,0,0" />
+            <Label Name="ServerLabel" Content="Server" HorizontalAlignment="Left" Width="75" FontWeight="Bold"/>
+            <TextBox Name="ServerTextBox" HorizontalAlignment="Left" Text="192.168.0.104" Width="125" VerticalContentAlignment="Center" ToolTip="Server Address" TabIndex="1" Margin="20,0,0,0" />
+            <Label Name="PortLabel" Content="Port" HorizontalAlignment="Left" Width="75" FontWeight="Bold"/>
+            <TextBox Name="PortTextBox" HorizontalAlignment="Left" Text="3000" Width="125" VerticalContentAlignment="Center" ToolTip="Server Port Number" Margin="20,0,0,0" />
+            <Label Content="Status" HorizontalAlignment="Left" Width="75" FontWeight="Bold"/>
+            <TextBox x:Name="StatusLabel" Text="Disconnected" Width="125" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" ToolTip="Connection Status" Margin="20,0,0,0" />
+            <Button x:Name="StatusSubmit" Content="Connect" Width="150" HorizontalAlignment="Left" Margin="20,60,0,10"/>
+
+        </StackPanel>
+
+        <TextBox x:Name="displayID" HorizontalAlignment="Left" Height="23" Margin="1,14,0,0" TextWrapping="Wrap" Text="ID:" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="displayGestureCount" HorizontalAlignment="Left" Margin="1,158,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="2" />
+        <TextBox x:Name="displayGestureType1" HorizontalAlignment="Left" Margin="114,76,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="3" />
+        <TextBox x:Name="displayWhichHand1" HorizontalAlignment="Left" Margin="4,76,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="4" />
+        <TextBox x:Name="displayHandCount" HorizontalAlignment="Left" Margin="1,63,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="2" />
+        <TextBox x:Name="displayFingerCount" HorizontalAlignment="Left" Margin="1,113,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="2" />
+        <Label x:Name="FrameId" Content="Frame ID" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="0,10,57,273" Grid.Column="1"/>
+        <Label x:Name="HandId" Content="Hand&#xD;&#xA;" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="0,59,57,222" Grid.Column="1"/>
+        <Label x:Name="FingerId" Content="Finger" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="0,109,57,170" Grid.Column="1"/>
+        <Label x:Name="GestureId" Content="Gesture" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="0,154,57,122" Grid.Column="1"/>
+        <Label x:Name="GestureTypeId" Content="GestureType" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="114,28,76,248" Grid.Column="3"/>
+        <Label x:Name="WhichHandId" Content="WhichHand" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="4,33,180,243" Grid.Column="4"/>
+        <Label x:Name="HandsID" Content="HandID" FontWeight="Bold" RenderTransformOrigin="-0.443,0.36" Margin="3,28,187,248" Grid.Column="3"/>
+        <TextBox x:Name="displayGestureType2" HorizontalAlignment="Left" Margin="114,109,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="3" />
+        <TextBox x:Name="displayWhichHand2" HorizontalAlignment="Left" Margin="4,109,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="120" Grid.Column="4" />
+        <TextBox x:Name="displayHandsID1" HorizontalAlignment="Left" Margin="3,76,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="87" Grid.Column="3" />
+        <TextBox x:Name="displayHandsID2" HorizontalAlignment="Left" Margin="3,109,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="21" Width="87" Grid.Column="3" />
+    </Grid>
+
+
+</Window>
