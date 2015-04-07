@@ -494,6 +494,8 @@ namespace SoD_Sensor_Leap
             }
             public int handID;
             public string whichHand;
+
+
             public string gestureType;
 
 
