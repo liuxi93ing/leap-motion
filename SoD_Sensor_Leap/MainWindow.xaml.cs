@@ -37,7 +37,7 @@ namespace SoD_Sensor_Leap
         public partial class MainWindow : Window, ILeapEventDelegate
         {
             #region Global Local Variables & Constants
-            private Controller controller = new Controller();
+            private Controller controller;
             private LeapEventListener listener;
             private Boolean isClosing = false;
 
@@ -65,14 +65,10 @@ namespace SoD_Sensor_Leap
                     }
                 }
                 ServerTextBox.Text = localIP;
-
-               
-                
+                   
                 this.controller = new Controller();
                 this.listener = new LeapEventListener(this);
                 controller.AddListener(listener);
-
-
 
 
             }
@@ -81,25 +77,6 @@ namespace SoD_Sensor_Leap
             {
                 leapID = System.Environment.MachineName;
                 NameTextBox.Text = leapID;
-
-                /*try
-                {
-                    if (!TestKinect2Availability())
-                    {
-                        //no Kinects or Kinect2s connected
-                        Application.Current.Shutdown(0);
-                    }
-                    else
-                    {
-                        InitializeKinect2();
-                    }
-                }
-                catch (MissingMethodException)
-                {
-                    MessageBox.Show("Missing method exception, most likely due to no Kinect2 being plugged in.");
-                    Application.Current.Shutdown(0);
-                }
-                */
 
                 StatusSubmit.Click += new RoutedEventHandler(StatusSubmit_Click);
             }
@@ -267,7 +244,7 @@ namespace SoD_Sensor_Leap
                     whichHand = "no hand";
                     displayWhichHand1.Text = whichHand;
                     displayWhichHand2.Text = whichHand;
-                    whichHand = null;
+                  //  whichHand = null;
                 }
 
                 else if (handsinFrame.Count >= 1)
@@ -280,7 +257,7 @@ namespace SoD_Sensor_Leap
                     else
                         whichHand = "right";
                     displayWhichHand1.Text = whichHand;
-                    whichHand = null;
+                   // whichHand = null;
                     if (handsinFrame.Count > 1)
                     {
 
@@ -291,7 +268,7 @@ namespace SoD_Sensor_Leap
                             else
                                 whichHand = "right";
                             displayWhichHand2.Text = whichHand;
-                            whichHand = null;
+                            //whichHand = null;
                         
                     }
                     else
@@ -299,7 +276,7 @@ namespace SoD_Sensor_Leap
                         displayHandsID2.Text = "0";
                         whichHand = "no hand";
                         displayWhichHand2.Text = whichHand;
-                        whichHand = null;
+                        //whichHand = null;
                     }
                 }
 
@@ -322,7 +299,9 @@ namespace SoD_Sensor_Leap
                 displayHandCount.Text = frame.Hands.Count.ToString();
                 displayGestureCount.Text = frame.Gestures().Count.ToString();
 
-                
+                if (frame.Hands.Count == 1)
+                    socket.Emit("handsUpdate", new updateHands1(displayHandsID1.Text, displayWhichHand1.Text, displayGestureType1.Text));
+
                 /*for (int g = 0; g < frame.Gestures().Count; g++)
                 {
                     //displayGestureType.Text = frame.Gestures()[g].GetType().ToString();
@@ -494,8 +473,21 @@ namespace SoD_Sensor_Leap
             }
             public int handID;
             public string whichHand;
+            public string gestureType;
 
 
+        }
+
+        public class updateHands1
+        {
+            public updateHands1(string handID, string whichHand, string gestureType)
+            {
+                this.handID = handID;
+                this.whichHand = whichHand;
+                this.gestureType = gestureType;
+            }
+            public string handID;
+            public string whichHand;
             public string gestureType;
 
 
